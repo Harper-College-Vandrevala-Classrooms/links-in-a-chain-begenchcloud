@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.csc.TestLinks" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-11-17T14:05:46" hostname="BENS-LAPTOP" time="0.034">
+  <properties/>
+  <testcase name="testMultipleAppends()" classname="com.csc.TestLinks" time="0.029"/>
+  <testcase name="testAppendAndGet()" classname="com.csc.TestLinks" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
