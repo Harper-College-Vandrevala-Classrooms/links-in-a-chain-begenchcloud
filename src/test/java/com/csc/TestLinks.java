@@ -5,35 +5,43 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class TestLinks {
+    Links<String> links;
 
-  Links links;
+    @BeforeEach
+    void setUp() {
+        links = new Links<>();
+    }
 
-  @BeforeEach
-  void setUp() {
-    links = new Links();
-  }
+    @Test
+    void testAppendAndGet() {
+        links.append("red");
+        assertEquals("red", links.get(0));
+    }
 
-  @Test
-  void testAppendAndGet() {
-    ChainLink linkOne = new ChainLink("red");
-    links.append(linkOne);
-    
-    ChainLink retrievedLink = links.get(0);
-    assertEquals("red", retrievedLink.color);
-  }
+    @Test
+    void testPrepend() {
+        links.prepend("blue");
+        links.prepend("red");
+        assertEquals("red", links.get(0));
+        assertEquals("blue", links.get(1));
+    }
 
-  @Test
-  void testMultipleAppends() {
-    ChainLink linkOne = new ChainLink("red");
-    ChainLink linkTwo = new ChainLink("blue");
-    links.append(linkOne);
-    links.append(linkTwo);
+    @Test
+    void testSizeMethod() {
+        links.append("red");
+        links.append("blue");
+        links.append("green");
+        assertEquals(2, links.size(links.getHead().getNext()));
+    }
 
-    ChainLink retrievedLinkOne = links.get(0);
-    ChainLink retrievedLinkTwo = links.get(1);
+    @Test
+    void testGenericType() {
+        Links<Integer> intLinks = new Links<>();
+        intLinks.append(1);
+        intLinks.append(2);
+        intLinks.append(3);
 
-    assertEquals("red", retrievedLinkOne.color);
-    assertEquals("blue", retrievedLinkTwo.color);
-  }
-
+        assertEquals(1, intLinks.get(0));
+        assertEquals(3, intLinks.size(intLinks.getHead()));
+    }
 }
